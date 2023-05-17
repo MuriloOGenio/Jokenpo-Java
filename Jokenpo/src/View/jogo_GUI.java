@@ -13,10 +13,10 @@ import javax.swing.JOptionPane;
  * @author LAB03M07
  */
 public class jogo_GUI extends javax.swing.JFrame {
-
-    /**
-     * Creates new form jogo_GUI
-     */
+    int contPC;
+    int contjog;
+            
+    
     public jogo_GUI() {
         initComponents();
         pedra.setVisible(false);
@@ -25,6 +25,7 @@ public class jogo_GUI extends javax.swing.JFrame {
         pedra1.setVisible(false);
         tesoura1.setVisible(false);
         papel1.setVisible(false);
+        contadorjog.setText("Jogador "+contjog);
     }
 
     /**
@@ -42,13 +43,13 @@ public class jogo_GUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         papel = new org.edisoncor.gui.panel.PanelImage();
         tesoura = new org.edisoncor.gui.panel.PanelImage();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         papel1 = new org.edisoncor.gui.panel.PanelImage();
         tesoura1 = new org.edisoncor.gui.panel.PanelImage();
         pedra1 = new org.edisoncor.gui.panel.PanelImage();
         jLabel4 = new javax.swing.JLabel();
+        contadorjog = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -106,15 +107,10 @@ public class jogo_GUI extends javax.swing.JFrame {
         jPanel1.add(tesoura);
         tesoura.setBounds(690, 160, 100, 100);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Jogador");
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(160, 80, 90, 14);
-
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Computador");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(720, 90, 90, 14);
+        jLabel3.setBounds(720, 90, 90, 30);
         jPanel1.add(jTabbedPane1);
         jTabbedPane1.setBounds(0, -30, 100, 100);
 
@@ -132,7 +128,7 @@ public class jogo_GUI extends javax.swing.JFrame {
         );
 
         jPanel1.add(papel1);
-        papel1.setBounds(170, 160, 120, 100);
+        papel1.setBounds(290, 160, 120, 100);
 
         tesoura1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/tesoura.png"))); // NOI18N
 
@@ -148,7 +144,7 @@ public class jogo_GUI extends javax.swing.JFrame {
         );
 
         jPanel1.add(tesoura1);
-        tesoura1.setBounds(310, 160, 100, 100);
+        tesoura1.setBounds(160, 160, 100, 100);
 
         pedra1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/pedra.png"))); // NOI18N
 
@@ -170,6 +166,8 @@ public class jogo_GUI extends javax.swing.JFrame {
         jLabel4.setText("X");
         jPanel1.add(jLabel4);
         jLabel4.setBounds(470, 170, 60, 70);
+        jPanel1.add(contadorjog);
+        contadorjog.setBounds(140, 280, 130, 60);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -203,7 +201,7 @@ public class jogo_GUI extends javax.swing.JFrame {
              tesoura1.setVisible(false);
             pedra1.setVisible(false);
         }
-           Random gerador = new Random();
+        Random gerador = new Random();
         int pc = gerador.nextInt(3);
         if(pc == 0){
             pedra.setVisible(true);
@@ -219,7 +217,13 @@ public class jogo_GUI extends javax.swing.JFrame {
             pedra.setVisible(false);
             tesoura.setVisible(false);
         }  
-            
+        if(jogador == 0 && pc == 1){
+            contjog++;
+        }else if(jogador == 1 && pc == 2){
+            contjog++;
+        }else if (jogador == 2 && pc == 0){
+            contjog++;
+        }
         
     }//GEN-LAST:event_EscolhaActionPerformed
 
@@ -260,8 +264,8 @@ public class jogo_GUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Escolha;
+    private javax.swing.JLabel contadorjog;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
